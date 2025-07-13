@@ -133,3 +133,5 @@ let studentCapitalNameReduce = students.reduce((acc, currStudent) => {
   return acc;
 }, []);
 console.log(studentCapitalNameReduce);
+
+// Q2 --> return only the details of those students who scored more than 60 marks
