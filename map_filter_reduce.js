@@ -51,3 +51,23 @@ const greaterThanTwo = arr.myFilter((ele) => ele > 2);
 console.log(greaterThanTwo);
 
 // polyfill for reduce
+/*
+arr.reduce((acc,curr,i,arr)=>{
+  
+  },initialValue);
+*/
+Array.prototype.myReduce = function (cb, initialValue) {
+  // returns a single value
+  let accumulator = initialValue;
+  for (let i = 0; i < this.length; i++) {
+    accumulator = accumulator
+      ? cb(accumulator, this[i], i, this)
+      : (accumulator = this[i]);
+  }
+  return accumulator;
+};
+
+const mySum = arr.myReduce((acc, curr, i, arr) => {
+  return acc + curr;
+}, 0);
+console.log(mySum);
