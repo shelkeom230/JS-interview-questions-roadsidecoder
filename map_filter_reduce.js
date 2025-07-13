@@ -71,3 +71,65 @@ const mySum = arr.myReduce((acc, curr, i, arr) => {
   return acc + curr;
 }, 0);
 console.log(mySum);
+
+// what is the difference between map and foreach
+
+/*
+1. map returns a new array whereas forEach does not
+2. you can chain other functions to the result of map as it returns an array but can't do the same with forEach as it does not returns an array 
+*/
+
+const array = [3, 4, 5, 6, 7];
+
+// double each element
+const mapResult = array.map((ele) => ele * 2);
+
+//triple each element
+const forEachResult = array.forEach((ele, i) => (arr[i] = ele * 3));
+
+// print original array
+console.log(`original array ${array}`);
+
+// map output
+console.log(`map output ${mapResult}`);
+
+// forEach result
+console.log(`forEach output ${forEachResult}`);
+
+// output based questions
+
+// Q1 --> return name of the students in capital letters
+let students = [
+  { name: "Piyush", rollNumber: 31, marks: 80 },
+  { name: "Jenny", rollNumber: 15, marks: 69 },
+  { name: "Kaushal", rollNumber: 16, marks: 35 },
+  { name: "DilPreet", rollNumber: 7, marks: 55 },
+];
+
+// using for loop only
+for (let i = 0; i < students.length; i++) {
+  console.log(students[i].name.toUpperCase());
+}
+
+// using foreach loop
+students.forEach((student) => console.log(student.name.toUpperCase()));
+
+// using map function
+let studentsCapitalNameMap = students.map((student) =>
+  student.name.toUpperCase()
+);
+console.log(studentsCapitalNameMap);
+
+// using filter function - not recommended at all as it returns entire object with names in uppercase
+let studentCapitalNameFilter = students.filter((student) => {
+  student.name = student.name.toUpperCase();
+  return true;
+});
+console.log(studentCapitalNameFilter);
+
+// using reduce function
+let studentCapitalNameReduce = students.reduce((acc, currStudent) => {
+  acc.push(currStudent.name.toUpperCase());
+  return acc;
+}, []);
+console.log(studentCapitalNameReduce);
