@@ -58,4 +58,32 @@ function getScore() {
   }
   return add();
 }
-console.log(getScore());
+// console.log(getScore());
+
+// what will be the output
+
+// using let
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => {
+    console.log(i); // 0 1 2 3 4
+  }, i * 1000);
+}
+
+// using var
+for (var i = 0; i < 5; i++) {
+  setTimeout(() => {
+    console.log(i); // 5 5 5 5 5
+  }, i * 1000);
+}
+
+// using var and another argument j
+for (var i = 0; i < 5; i++) {
+  setTimeout((j) => console.log(j), i * 1000, i);
+}
+
+// using var and IIFE
+for (var i = 0; i < 5; i++) {
+  (function (j) {
+    setTimeout(() => console.log(j), j * 1000);
+  })(i); // Pass current i to a new scope
+}
