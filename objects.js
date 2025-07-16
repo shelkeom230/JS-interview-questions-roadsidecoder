@@ -236,7 +236,43 @@ console.log(members); // [{name: "Lydia"}]
 some important points 
 1. in js, objects are reference types
 2. assigning an object to another variable( or putting it in an array) copies the reference, not the object itself.
-3. setting person=null doesn't delete or change the original object -- it just breaks on of the reference to it.
+3. setting person=null doesn't delete or change the original object -- it just breaks on of the reference to it.still, you can do the modifications to the object using the second reference i.e members 
 */
 
 // what is the output
+const val = { number: 10 };
+
+const multiply = (x = { ...val }) => {
+  console.log((x.number *= 2));
+};
+
+multiply(); // 20
+multiply(); // 20
+multiply(val); // 20
+multiply(val); // 20*2=40
+
+// when no args are passed, the default value is the shallow clone of val
+// passing val directly causes mutations to affect the original object
+// in js, objects are passed by reference , unless explicitly cloned.
+
+// what is the output
+function chnageAgeAndReference(person) {
+  person.age = 25;
+  person = {
+    name: "john",
+    age: 50,
+  };
+  return person;
+}
+
+const personObj1 = {
+  name: "alex",
+  age: 50,
+};
+
+const personObj2 = chnageAgeAndReference(personObj1);
+console.log(personObj1); // age will be changed to 25 due to reference passing
+console.log(personObj2); // as it is person in function
+
+// what is shallow copy and what is deep copy
+// now, how to deep copy / clone an object ?
