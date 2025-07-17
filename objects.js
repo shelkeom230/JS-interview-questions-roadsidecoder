@@ -275,4 +275,63 @@ console.log(personObj1); // age will be changed to 25 due to reference passing
 console.log(personObj2); // as it is person in function
 
 // what is shallow copy and what is deep copy
+
+/*
+In shallow copy, you copy the object, but still share the inside stuff like nested objets or arrays. so changing the inside affects both, original and shallow copy 
+
+In deep copy, you copy everything , inside and out. so changes are completely seprate.
+
+e.g) with a lunchbox 
+You are your friend both get a lunchbox 
+
+-- the outside name label is different - top level 
+-- but inside, you both are sharing the same food container - that's like a nested object.
+
+in case of shallow copy, it is like , you got a new lunchbox but the food inside is shared.
+now , if you eat the pizza from your lunchbox and your friend opens the lunchbox, pizza will be gone due to shared property.
+
+in short, the same foodbox was shared, you only copied the outside and not the inside stuff 
+
+____________________________________
+in deep copy, you and your friend get completely seprate lunchboxes , with your own food.
+now, if you eat your pizza , then also, your friend has still his own 
+
+-- in short, because the food containers were fully seprate , nothing is shared.
+*/
+
+// shallow copy
+const original = { food: { item: "pizza" } };
+const shallow = { ...original };
+
+// shallow.food.item = "Gone";
+// console.log(original); // changed to gone
+
+// deep copy
+const deep = structuredClone(original);
+deep.food.item = "gone";
+console.log(original); // no change
+console.log(deep); // changed
+
 // now, how to deep copy / clone an object ?
+
+// there are 3 ways
+let userObject = {
+  name: "roadside coder",
+  age: 24,
+};
+
+// 1. use Obbject.assign({},objName);
+const clonedObject1 = Object.assign({}, userObject); // creates a deep copy
+// only changed cloneObject1
+clonedObject1.name = "Piyush";
+// console.log(userObject, clonedObject1);
+
+// 2. use JSON.parse() and JSON.stringify(object)
+const cloneObject2 = JSON.parse(JSON.stringify(userObject)); // convert object to string and then parse into JSON , this also creates a deep copy
+cloneObject2.name = "omkar";
+// console.log(userObject, cloneObject2);
+
+// 3. use destructure
+const cloneObject3 = { ...userObject };
+cloneObject3.name = "piyush agarwal";
+console.log(userObject, cloneObject3);
