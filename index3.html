@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event propogation</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    div,
+    form,
+    button {
+      margin: 50px;
+      padding: 10px;
+      border: 1px solid black;
+    }
+    li {
+      font-size: 20px;
+      padding: 10px;
+    }
+  </style>
+  <body>
+    <div id="parent">
+      parent
+      <form id="form">
+        form
+        <button id="btn">click me</button>
+      </form>
+    </div>
+
+    <br />
+
+    <div class="products">
+      <li class="mobile">mobile</li>
+      <li class="laptops">laptops</li>
+      <li class="cameras">cameras</li>
+      <li class="cloths">cloths</li>
+      <li class="shoes">shoes</li>
+    </div>
+    <script src="event_propogation.js"></script>
+  </body>
+</html>

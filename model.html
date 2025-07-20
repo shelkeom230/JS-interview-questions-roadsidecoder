@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Example</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Initially hidden */
+      .modelContainer {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5); /* overlay */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      /* Modal box */
+      .modalContent {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        position: relative;
+        text-align: center;
+      }
+
+      /* Open modal button */
+      .openModelBtn {
+        margin: 2rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .openModelBtn:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="modelContainer">
+        <div class="modalContent">
+          <h2>Modal Title</h2>
+        </div>
+      </div>
+    </div>
+
+    <button class="openModelBtn">Open Modal</button>
+
+    <script src="model_component.js"></script>
+  </body>
+</html>
